@@ -1,0 +1,151 @@
+{% include 'base2.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Collection</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .album {
+            padding: 4rem 0;
+            background-color: #ffffff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        h1{
+            font-size: 2.5rem;
+            color: #020001;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .col {
+            flex: 1 0 100%;
+            max-width: calc(33.3333% - 1.5rem);
+            box-sizing: border-box;
+        }
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+        .card-body {
+            padding: 1rem;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: hwb(0 1% 99%);
+        }
+        .card-price {
+            font-size: 1.1rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        .card-description {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .btn {
+            display: inline-block;
+            font-weight: 500;
+            color: #007bff;
+            text-align: center;
+            cursor: pointer;
+            background-color: transparent;
+            border: 1px solid #007bff;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .btn:hover {
+            color: #fff;
+            background-color: #007bff;
+        }
+        .btn-outline-secondary {
+            border-color: #6c757d;
+            color: #6c757d;
+        }
+        .btn-outline-secondary:hover {
+            color: #fff;
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        .text-body-secondary {
+            color: #888;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="album">
+        <div class="container">
+            <h1>Men's Collection</h1>
+            <div class="row">
+                {% for i in ml %}
+                <div class="col">
+                    <div class="card">
+                        {% if i.image %}
+                        <img src="{{ i.image.url }}" alt="{{ i.product_name }}" style="width:100%; height: auto;">
+                        {% else %}
+                        <div class="card-body">
+                            <p class="card-text">No image available</p>
+                        </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <p class="card-title">{{ i.product_name }}</p>
+                            <p class="card-price">Rs. {{ i.product_price }}</p>
+                            <p class="card-description">{{ i.description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="add_to_cart/{{ i.id }}" class="btn btn-sm btn-outline-secondary">Add to Cart</a>
+                                    <a href="" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                </div>
+                                <small class="text-body-secondary">Updated recently</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}    
+            </div>
+        </div>
+    </div>
+</body> 
+</html>
+{% endblock %}

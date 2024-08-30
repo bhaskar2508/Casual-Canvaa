@@ -1,0 +1,71 @@
+{% include 'base2.html' %}
+{% load static %}
+{% block body %}
+<style>
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.payment-card {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+h1 {
+    color: #343a40;
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1#total {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.button-container button {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: linear-gradient(to right, #28a745, #218838);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.button-container button:hover {
+    background: linear-gradient(to right, #218838, #1e7e34);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+</style>
+
+<div class="payment-card">
+    <form action="process_payment" method="post">
+    <h1>Payment Details</h1>
+    <div id="container" class="button-container"></div>
+    <p>Cash On delivery : {{final_total}} /-</p>
+    </form>
+</div>
+
+
+
+{% endblock %}

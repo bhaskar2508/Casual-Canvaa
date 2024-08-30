@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contact-container {
+            width: 60%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .contact-container h1 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .contact-container p {
+            font-size: 1em;
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .logo {
+            float: left;
+            background-color: transparent;
+            position: relative;
+            top: -30px;
+        }
+
+        .head {
+            text-align: right;
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+
+        .head a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 1.3em;
+            margin-left: 15px;
+        }
+
+        .head a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+        margin-top: 50px;
+    }
+
+    .footer-content {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer p {
+        margin: 0;
+        font-size: 1em;
+    }
+
+    .footer-links {
+        margin: 20px 0;
+    }
+
+    .footer-links a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 0.9em;
+        transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+        color: #e7e7e7;
+    }
+
+    .social-media {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .social-icon {
+        width: 30px;
+        height: 30px;
+        transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .social-icon:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+        .message-container {
+            margin-top: 20px;
+        }
+
+        .alert {
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="head">
+        <a href="/">Home</a>
+        <a href="collections">Collection</a>
+        <a href="about">About Us</a>
+        <a href="contact">Contact Us</a>
+    </header>
+
+    <div class="logo">
+        <img src='/static/images/logo.jpg' alt="logo" height="70px" width="70px">
+    </div>
+
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you! Fill out the form below and we'll get back to you as soon as possible.</p>
+
+        <div class="message-container">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <form action="data1" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Category</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Casual Canvass. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/">Privacy Policy</a>
+                <a href="/">Terms of Service</a>
+                <a href="/">Contact Us</a>
+            </div>
+            <div class="social-media">
+                <a href="https://www.instagram.com/" target="_blank">
+                    <img src="/static/images/insta.jpg" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://www.facebook.com/" target="_blank">
+                    <img src="/static/images/facebook.png" alt="Facebook" class="social-icon">
+                </a>
+                <a href="https://web.whatsapp.com/" target="_blank">
+                    <img src="/static/images/whatsapp.jpg" alt="WhatsApp" class="social-icon">
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+{% include 'base2.html' %}
+{% block body %}
+<style>
+    .collection-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 20px 0;
+    }
+
+    .collection {
+        flex: 1 1 30%;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .collection img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .collection h2 {
+        font-size: 1.5em;
+        margin: 15px 0;
+        color: #007BFF;
+    }
+
+    .collection p {
+        font-size: 1em;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .collection a {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 15px;
+        background-color: #007BFF;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .collection a:hover {
+        background-color: #0056b3;
+    }
+    h1{
+            font-size: 2.5rem;
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+</style>
+
+<h1>Our Collections</h1>
+
+<div class="collection-container">
+    <div class="collection">
+        <img src="/static/images/mens-collection.jpg" alt="Men's Collection">
+        <h2>Men's Collection</h2>
+        <p>Discover our latest men's fashion collection featuring trendy outfits, comfortable wear, and stylish accessories.</p>
+        <a href="mlist">Shop Men's</a>
+    </div>
+    <div class="collection">
+        <img src="/static/images/womens-collection.jpg" alt="Women's Collection">
+        <h2>Women's Collection</h2>
+        <p>Explore our women's collection with a wide range of stylish clothing, accessories, and footwear to keep you in vogue.</p>
+        <a href="wlist">Shop Women's</a>
+    </div>
+    <div class="collection">
+        <img src="/static/images/kids-collection.jpg" alt="Kids' Collection">
+        <h2>Kids' Collection</h2>
+        <p>Check out our kids' collection featuring cute and comfortable outfits perfect for your little ones.</p>
+        <a href="klist">Shop Kids</a>
+    </div>
+    <div class="collection">
+        <img src="/static/images/end-sale.jpg" alt="End of Season Sale">
+        <h2>Affordable pre-loved Clothing</h2>
+        <p>Don't miss out on our end of season sale with great discounts on a wide range of products. Grab your favorites before they're gone!</p>
+        <a href="elist">Shop Sale</a>
+    </div>
+</div>
+
+{% endblock %}

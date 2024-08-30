@@ -1,0 +1,171 @@
+{% include 'base2.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Collection</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .album {
+            padding: 4rem 0;
+            background-color: #ffffff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #020001;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .content p {
+            font-size: 1rem;
+            color: #10151a;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .col {
+            flex: 1 0 100%;
+            max-width: calc(33.3333% - 1.5rem);
+            box-sizing: border-box;
+        }
+        .card {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .card-body {
+            padding: 1rem;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: hwb(0 1% 99%);
+        }
+        .card-price {
+            font-size: 1.25rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        .card-description {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .btn {
+            display: inline-block;
+            font-weight: 500;
+            color: #007bff;
+            text-align: center;
+            cursor: pointer;
+            background-color: transparent;
+            border: 1px solid #007bff;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .btn:hover {
+            color: #fff;
+            background-color: #007bff;
+        }
+        .btn-outline-secondary {
+            border-color: #6c757d;
+            color: #6c757d;
+        }
+        .btn-outline-secondary:hover {
+            color: #fff;
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        .text-body-secondary {
+            color: #adb5bd;
+        }
+        @media (max-width: 768px) {
+            .col {
+                max-width: calc(50% - 1.5rem);
+            }
+        }
+        @media (max-width: 576px) {
+            .col {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="album">
+        <div class="container">
+            <h1>Affordable Pre-loved Clothing</h1>
+            <div class="content">
+                <p>At our organization, we believe everyone deserves access to quality clothing, regardless of their financial situation. Our collection is thoughtfully curated to provide stylish, comfortable, and durable clothing at prices that won't break the bank. From everyday essentials like t-shirts and jeans to seasonal wear such as jackets and sweaters, our aim is to ensure that everyone can dress with dignity and warmth.</p>
+                <p>We offer a wide range of sizes and styles to cater to all ages and preferences, ensuring that there's something for everyone. Our clothing is sourced and priced with care, allowing us to offer unbeatable value while maintaining the quality you deserve.</p>
+                <p>Whether you're looking to update your wardrobe on a tight budget or simply want to make sure your family is prepared for the changing seasons, our affordable clothing options are here to help. Visit us today and discover the difference that caring, community-driven pricing can make.</p>
+            </div>
+            <div class="row">
+                {% for i in ll %}
+                <div class="col">
+                    <div class="card">
+                        {% if i.image %}
+                        <img src="{{ i.image.url }}" alt="{{ i.product_name }}" style="height: auto; width: 100;">
+                        {% else %}
+                        <div class="card-body">
+                            <p class="card-text">No image available</p>
+                        </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <p class="card-title">{{i.product_name}}</p>
+                            <p class="card-price">Rs. {{i.product_price}}</p>
+                            <p class="card-description">{{i.description}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="add_to_cart_03/{{ i.id }}" class="btn btn-sm btn-outline-secondary">Add to Cart</a>
+                                    <a href="" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                </div>
+                                <small class="text-body-secondary">Updated recently</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}    
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
